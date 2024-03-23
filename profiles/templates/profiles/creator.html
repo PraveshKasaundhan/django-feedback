@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static "profiles/style.css" %}">
+</head>
+<body>
+    <header>
+        <h1><a href="{% url "profiles" %}">ProfileList</a></h1>
+    </header>
+    <form action="/pro/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Upload file.</h1>
+        {% comment %} <input type="file" name="imgobj" id="idimage"> {% endcomment %}
+        {{form}} <br>
+        <button type="submit">SUBMIT</button>
+    </form>
+</body>
+</html>

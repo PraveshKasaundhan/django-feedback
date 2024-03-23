@@ -1,0 +1,44 @@
+{% extends "reviews/base.html" %}
+
+{% block title %}ReviewPage{% endblock title %}
+
+{% block content %}
+    <form method="POST" action="/rev/">
+        <h1>Welcome to Review Form</h1>
+        <p><a href="{% url "review_list" %}">ReviewList</a></p>
+        
+        {% csrf_token %}
+        
+        {% comment %} {% if has_error %}
+            <p>Entered Input is invalid</p>
+        {% endif %} {% endcomment %}
+        {% comment %} <label for="user_name">YourName</label>
+        <input id="user_name" name="user_name" type="text"> {% endcomment %}
+        {% comment %} {{form}} {% endcomment %}
+
+        {% comment %} <div class="form-control {% if form.user_name.errors %}error{% endif %}">
+            {{form.user_name.label_tag}}
+            {{form.user_name}}
+            {{form.user_name.errors}}
+        </div>
+        <div class="form-control {% if form.review_text.errors %}error{% endif %}">
+            {{form.review_text.label_tag}}
+            {{form.review_text}}
+            {{form.review_text.errors}}
+        </div>
+        <div class="form-control {% if form.rating.errors %}error{% endif %}">
+            {{form.rating.label_tag}}
+            {{form.rating}}
+            {{form.rating.errors}}
+        </div> {% endcomment %}
+
+        {% for field in form %}
+            <div class="form-control {% if field.errors %}error{% endif %}">
+                {{field.label_tag}}
+                {{field}}
+                {{field.errors}}
+            </div>
+        {% endfor %}
+        <button type="submit">SUBMIT</button>
+    </form>
+{% endblock content %}

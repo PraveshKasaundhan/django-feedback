@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserProfiles</title>
+    <link rel="stylesheet" href="{% static "profiles/style.css" %}">
+
+</head>
+<body>
+    <header>
+        <h1><a href="{% url "prohome" %}">ProHome</a></h1>
+    </header>
+    <ul>
+        {% for profile in profiles %}
+        <li>
+            <h1>{{profile.name}}</h1>
+            <img src="{{profile.image.url}}" alt="" height=250 width=250>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
